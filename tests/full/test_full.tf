@@ -14,35 +14,37 @@ terraform {
 module "main" {
   source = "../.."
 
-  name        = "ABC"
-  alias       = "ALIAS"
-  description = "DESCR"
+  name                 = "PHY1"
+  vlan_pool            = "VP1"
+  vlan_pool_allocation = "dynamic"
 }
 
-data "aci_rest" "fvTenant" {
-  dn = "uni/tn-ABC"
+data "aci_rest" "physDomP" {
+  dn = "uni/phys-${module.main.name}"
 
   depends_on = [module.main]
 }
 
-resource "test_assertions" "fvTenant" {
-  component = "fvTenant"
+resource "test_assertions" "physDomP" {
+  component = "physDomP"
 
   equal "name" {
     description = "name"
-    got         = data.aci_rest.fvTenant.content.name
-    want        = "ABC"
+    got         = data.aci_rest.physDomP.content.name
+    want        = module.main.name
   }
+}
 
-  equal "nameAlias" {
-    description = "nameAlias"
-    got         = data.aci_rest.fvTenant.content.nameAlias
-    want        = "ALIAS"
-  }
+data "aci_rest" "infraRsVlanNs" {
+  dn = "${data.aci_rest.physDomP.id}/rsvlanNs"
+}
 
-  equal "descr" {
-    description = "descr"
-    got         = data.aci_rest.fvTenant.content.descr
-    want        = "DESCR"
+resource "test_assertions" "infraRsVlanNs" {
+  component = "infraRsVlanNs"
+
+  equal "tDn" {
+    description = "tDn"
+    got         = data.aci_rest.infraRsVlanNs.content.tDn
+    want        = "uni/infra/vlanns-[VP1]-dynamic"
   }
 }
