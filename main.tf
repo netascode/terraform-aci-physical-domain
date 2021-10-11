@@ -7,7 +7,7 @@ resource "aci_rest" "physDomP" {
 }
 
 resource "aci_rest" "infraRsVlanNs" {
-  dn         = "${aci_rest.physDomP.id}/rsvlanNs"
+  dn         = "${aci_rest.physDomP.dn}/rsvlanNs"
   class_name = "infraRsVlanNs"
   content = {
     tDn = "uni/infra/vlanns-[${var.vlan_pool}]-${var.vlan_pool_allocation}"
