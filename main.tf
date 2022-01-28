@@ -1,4 +1,4 @@
-resource "aci_rest" "physDomP" {
+resource "aci_rest_managed" "physDomP" {
   dn         = "uni/phys-${var.name}"
   class_name = "physDomP"
   content = {
@@ -6,8 +6,8 @@ resource "aci_rest" "physDomP" {
   }
 }
 
-resource "aci_rest" "infraRsVlanNs" {
-  dn         = "${aci_rest.physDomP.dn}/rsvlanNs"
+resource "aci_rest_managed" "infraRsVlanNs" {
+  dn         = "${aci_rest_managed.physDomP.dn}/rsvlanNs"
   class_name = "infraRsVlanNs"
   content = {
     tDn = "uni/infra/vlanns-[${var.vlan_pool}]-${var.vlan_pool_allocation}"
