@@ -12,7 +12,7 @@ Location in GUI:
 
 ```hcl
 module "aci_physical_domain" {
-  source  = "netascode/physical_domain/aci"
+  source  = "netascode/physical-domain/aci"
   version = ">= 0.1.0"
 
   name                 = "PHY1"
