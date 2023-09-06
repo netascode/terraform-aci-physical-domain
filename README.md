@@ -41,6 +41,7 @@ module "aci_physical_domain" {
 | <a name="input_name"></a> [name](#input\_name) | Physical domain name. | `string` | n/a | yes |
 | <a name="input_vlan_pool"></a> [vlan\_pool](#input\_vlan\_pool) | Vlan pool name. | `string` | n/a | yes |
 | <a name="input_vlan_pool_allocation"></a> [vlan\_pool\_allocation](#input\_vlan\_pool\_allocation) | Vlan pool allocation mode. Choices: `static`, `dynamic`. | `string` | `"static"` | no |
+| <a name="input_security_domains"></a> [security\_domains](#input\_security\_domains) | Security domains associated to physical domain | `list(string)` | `[]` | no |
 
 ## Outputs
 
@@ -53,6 +54,7 @@ module "aci_physical_domain" {
 
 | Name | Type |
 |------|------|
+| [aci_rest_managed.aaaDomainRef](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
 | [aci_rest_managed.infraRsVlanNs](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
 | [aci_rest_managed.physDomP](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
 <!-- END_TF_DOCS -->
