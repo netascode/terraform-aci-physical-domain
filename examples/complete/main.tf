@@ -5,4 +5,5 @@ module "aci_physical_domain" {
   name                 = "PHY1"
   vlan_pool            = "VP1"
   vlan_pool_allocation = "dynamic"
+  security_domains     = ["SEC1"]
 }

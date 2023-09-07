@@ -18,6 +18,7 @@ module "aci_physical_domain" {
   name                 = "PHY1"
   vlan_pool            = "VP1"
   vlan_pool_allocation = "dynamic"
+  security_domains     = ["SEC1"]
 }
 ```
 
@@ -32,7 +33,7 @@ module "aci_physical_domain" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aci"></a> [aci](#provider\_aci) | >= 2.0.0 |
+| <a name="provider_aci"></a> [aci](#provider\_aci) | 2.4.0 |
 
 ## Inputs
 
