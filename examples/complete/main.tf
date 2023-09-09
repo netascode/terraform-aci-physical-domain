@@ -1,6 +1,6 @@
 module "aci_physical_domain" {
   source  = "netascode/physical-domain/aci"
-  version = ">= 0.1.0"
+  version = ">= 0.1.1"
 
   name                 = "PHY1"
   vlan_pool            = "VP1"
